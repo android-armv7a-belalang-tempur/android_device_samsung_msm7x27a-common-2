@@ -138,52 +138,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/msm7x27a-common/prebuilt/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
     
-## Kernel modules
-PRODUCT_COPY_FILES += \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_stresstest.ko:system/lib/modules/mtd_stresstest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mt2131.ko:system/lib/modules/mt2131.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/diagchar.ko:system/lib/modules/diagchar.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tda18218.ko:system/lib/modules/tda18218.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mxl5007t.ko:system/lib/modules/mxl5007t.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tuner-types.ko:system/lib/modules/tuner-types.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/evbug.ko:system/lib/modules/evbug.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_readtest.ko:system/lib/modules/mtd_readtest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/librasdioif.ko:system/lib/modules/librasdioif.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_erasepart.ko:system/lib/modules/mtd_erasepart.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tda827x.ko:system/lib/modules/tda827x.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_oobtest.ko:system/lib/modules/mtd_oobtest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mt2266.ko:system/lib/modules/mt2266.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mc44s803.ko:system/lib/modules/mc44s803.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/qt1010.ko:system/lib/modules/qt1010.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/compat.ko:system/lib/modules/compat.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_pagetest.ko:system/lib/modules/mtd_pagetest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mt2060.ko:system/lib/modules/mt2060.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/xc5000.ko:system/lib/modules/xc5000.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tda18212.ko:system/lib/modules/tda18212.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tda18271.ko:system/lib/modules/tda18271.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_speedtest.ko:system/lib/modules/mtd_speedtest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_torturetest.ko:system/lib/modules/mtd_torturetest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tea5767.ko:system/lib/modules/tea5767.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tda8290.ko:system/lib/modules/tda8290.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tuner-xc2028.ko:system/lib/modules/tuner-xc2028.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tda9887.ko:system/lib/modules/tda9887.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/ath6kl.ko:system/lib/modules/ath6kl.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mxl5005s.ko:system/lib/modules/mxl5005s.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_subpagetest.ko:system/lib/modules/mtd_subpagetest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tuner-simple.ko:system/lib/modules/tuner-simple.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/max2165.ko:system/lib/modules/max2165.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mmc_test.ko:system/lib/modules/mmc_test.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tun.ko:system/lib/modules/tun.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mt20xx.ko:system/lib/modules/mt20xx.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/mtd_nandecctest.ko:system/lib/modules/mtd_nandecctest.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/gspca_main.ko:system/lib/modules/gspca_main.ko \
-    device/samsung/msm7x27a-common/prebuilt/lib/modules/tea5761.ko:system/lib/modules/tea5761.ko
-
-
 ## Other
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=2
 PRODUCT_TAGS += dalvik.gc.type-precise
