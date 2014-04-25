@@ -18,9 +18,6 @@
 ## Kernel, bootloader etc.
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_BOOTLOADER_BOARD_NAME := trebon,samsung
-# BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_SOURCE := kernel/samsung/msm7x27a
@@ -43,8 +40,8 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
 ## FM Radio
-BOARD_HAVE_QCOM_FM := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
+#BOARD_HAVE_QCOM_FM := true
+#COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 
 ## Webkit
 ENABLE_WEBGL := true
