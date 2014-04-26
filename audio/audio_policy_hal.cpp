@@ -1,19 +1,19 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
- * Copyright (c) 2012, The Linux Foundation. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright (C) 2011 The Android Open Source Project
+* Copyright (c) 2012, The Linux Foundation. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 #define LOG_TAG "audio_policy.msm7627a"
 //#define LOG_NDEBUG 0
@@ -113,7 +113,7 @@ static audio_policy_forced_cfg_t ap_get_force_use(
 }
 
 /* if can_mute is true, then audio streams that are marked ENFORCED_AUDIBLE
- * can still be muted. */
+* can still be muted. */
 static void ap_set_can_mute_enforced_audible(struct audio_policy *pol,
                                              bool can_mute)
 {
@@ -172,14 +172,16 @@ static audio_io_handle_t ap_get_output(struct audio_policy *pol,
                                        uint32_t sampling_rate,
                                        audio_format_t format,
                                        audio_channel_mask_t channelMask,
-                                       audio_output_flags_t flags)
+                                       audio_output_flags_t flags,
+                                       const audio_offload_info_t *offloadInfo)
 {
     struct qcom_audio_policy *qap = to_qap(pol);
 
     ALOGV("%s: tid %d", __func__, gettid());
     return qap->apm->getOutput((AudioSystem::stream_type)stream,
-                               sampling_rate,(int)  format, channelMask,
-                               (AudioSystem::output_flags)flags);
+                               sampling_rate,(int) format, channelMask,
+                               (AudioSystem::output_flags)flags,
+                               offloadInfo);
 }
 
 static int ap_start_output(struct audio_policy *pol, audio_io_handle_t output,
@@ -356,6 +358,14 @@ static int ap_dump(const struct audio_policy *pol, int fd)
     return qap->apm->dump(fd);
 }
 
+static bool ap_is_offload_supported(const struct audio_policy *pol,
+                                    const audio_offload_info_t *info)
+{
+    const struct qcom_audio_policy *qap = to_cqap(pol);
+    return qap->apm->isOffloadSupported(*info);
+}
+
+
 static int create_qcom_ap(const struct audio_policy_device *device,
                             struct audio_policy_service_ops *aps_ops,
                             void *service,
@@ -408,6 +418,7 @@ static int create_qcom_ap(const struct audio_policy_device *device,
     qap->policy.is_stream_active_remotely = ap_is_stream_active_remotely;
     qap->policy.is_source_active = ap_is_source_active;
     qap->policy.dump = ap_dump;
+    qap->policy.is_offload_supported = ap_is_offload_supported;
 
     qap->service = service;
     qap->aps_ops = aps_ops;

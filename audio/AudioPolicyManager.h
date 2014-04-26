@@ -1,19 +1,19 @@
 /*
- * Copyright (C) 2009 The Android Open Source Project
- * Copyright (C) 2012, The Linux Foundation. All rights reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+* Copyright (C) 2009 The Android Open Source Project
+* Copyright (C) 2012, The Linux Foundation. All rights reserved.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 
 
 #include <stdint.h>
@@ -48,7 +48,8 @@ public:
                                             uint32_t format = AudioSystem::FORMAT_DEFAULT,
                                             uint32_t channels = 0,
                                             AudioSystem::output_flags flags =
-                                                    AudioSystem::OUTPUT_FLAG_INDIRECT);
+                                                    AudioSystem::OUTPUT_FLAG_INDIRECT,
+                                            const audio_offload_info_t *offloadInfo = NULL);
 
         virtual void releaseOutput(audio_io_handle_t output);
 
@@ -60,7 +61,7 @@ public:
 
         virtual audio_devices_t getDeviceForVolume(audio_devices_t device);
 
-        virtual uint32_t  checkDeviceMuteStrategies(AudioOutputDescriptor *outputDesc,
+        virtual uint32_t checkDeviceMuteStrategies(AudioOutputDescriptor *outputDesc,
                                             audio_devices_t prevDevice,
                                             uint32_t delayMs);
         virtual void setForceUse(AudioSystem::force_use usage, AudioSystem::forced_config config);
@@ -94,7 +95,7 @@ protected:
                                                      audio_output_flags_t flags);
 
 
-        bool    isCompatibleProfile(AudioPolicyManagerBase::IOProfile *profile,
+        bool isCompatibleProfile(AudioPolicyManagerBase::IOProfile *profile,
                                     audio_devices_t device,
                                     uint32_t samplingRate,
                                     uint32_t format,
@@ -116,12 +117,12 @@ protected:
         virtual status_t stopOutput(audio_io_handle_t output,
                                AudioSystem::stream_type stream,
                                int session = 0);
-        virtual void setFmMode(fm_modes mode) {  fmMode = mode; }
-        virtual fm_modes getFMMode() const {  return fmMode; }
+        virtual void setFmMode(fm_modes mode) { fmMode = mode; }
+        virtual fm_modes getFMMode() const { return fmMode; }
 
 private:
         // updates device caching and output for streams that can influence the
-        //    routing of notifications
+        // routing of notifications
         void handleNotificationRoutingForStream(AudioSystem::stream_type stream);
 };
 };
