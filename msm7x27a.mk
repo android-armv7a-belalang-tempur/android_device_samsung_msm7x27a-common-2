@@ -138,6 +138,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/msm7x27a-common/prebuilt/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
     
+# Disable SELinux
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.boot.selinux=disabled
+    
 ## Other
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=2
 PRODUCT_TAGS += dalvik.gc.type-precise
