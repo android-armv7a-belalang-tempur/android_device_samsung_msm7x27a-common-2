@@ -40,8 +40,8 @@ TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
 ## FM Radio
-#BOARD_HAVE_QCOM_FM := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
+BOARD_HAVE_QCOM_FM := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_FM_ENABLED
 
 ## Webkit
 ENABLE_WEBGL := true
@@ -50,29 +50,17 @@ TARGET_FORCE_CPU_UPLOAD := true
 ## ION
 #TARGET_USES_ION := true
 
-## Qcom hardwae
-BOARD_USES_QCOM_HARDWARE := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
-
-## Video
-TARGET_QCOM_MEDIA_VARIANT := legacy
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-
-## Audio
-TARGET_QCOM_AUDIO_VARIANT := legacy
-BOARD_USES_LEGACY_ALSA_AUDIO := true
-COMMON_GLOBAL_CFLAGS += -DNO_TUNNELED_SOURCE
-
-## EGL, graphics
+## Graphics, audio, video
 USE_OPENGL_RENDERER := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
-TARGET_DOESNT_USE_FENCE_SYNC := true
+TARGET_QCOM_MEDIA_VARIANT := legacy
+TARGET_QCOM_AUDIO_VARIANT := legacy
+TARGET_USES_QCOM_BSP := true
+BOARD_USES_QCOM_HARDWARE := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
 BOARD_EGL_CFG := device/samsung/msm7x27a-common/prebuilt/lib/egl/egl.cfg
-
-## Qualcomm BSP
-TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+TARGET_QCOM_LEGACY_OMX := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP -DQCOM_NO_SECURE_PLAYBACK
 
 # Camera
 BOARD_NEEDS_MEMORYHEAPPMEM := true
@@ -139,19 +127,12 @@ TARGET_PROVIDES_LIBLIGHTS := true
 TARGET_PROVIDES_LIBAUDIO := true
 
 ## Recovery
-DEVICE_RESOLUTION := 320x480
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_DEFAULT_EXTERNAL_STORAGE := false
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_INTERNAL_STORAGE_PATH := "/sdcard"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "sdcard"
-TARGET_RECOVERY_INITRC := device/samsung/msm7x27a-common/recovery/init.recovery.qcom.rc
+TARGET_RECOVERY_INITRC := device/samsung/msm7x27a-common/recovery/init.recovery.rc
 TARGET_RECOVERY_FSTAB := device/samsung/msm7x27a-common/rootdir/fstab.qcom
+ifdef BUILD_RECOVERY
+BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/msm7x27a-common/recovery/graphics.c
+endif
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/msm7x27a-common/recovery/recovery_keys.c
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
-TARGET_RECOVERY_SWIPE := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_SDCARD_INTERNAL := true
